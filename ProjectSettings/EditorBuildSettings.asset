@@ -7,11 +7,16 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/MobileAppMenu.unity
+    guid: cbdaa0048a90db0408031626eb210add
   - enabled: 0
     path: Assets/Scenes/MobileApp.unity
+    guid: 13974349e0b530e43b9843771422f76e
   - enabled: 0
     path: Assets/Scenes/Menu.unity
-  - enabled: 1
-    path: Assets/Scenes/KinectApp.unity
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/KinectAppMenu.unity
+    guid: 7db7f641fabbcbd40978457faa05670d
+  - enabled: 1
+    path: Assets/Scenes/KinectApp.unity
+    guid: 64efc609091041a49a77a144d6571fd8

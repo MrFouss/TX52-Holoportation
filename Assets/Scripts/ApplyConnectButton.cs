@@ -9,25 +9,20 @@ using UnityEngine.UI;
 public class ApplyConnectButton : MonoBehaviour {
 
     public ServerInfoContainer ServerInfoContainer;
-
     public NetworkManager NetworkManager;
-
     public GameObject LoadingImage;
 
     public void ConnectAndLoad() {
-        int port = 0;
-        try {
-            port = int.Parse(this.ServerInfoContainer.Port);
-        }
-        catch {
-        }
-        if (port != 0) {
+        string address = this.ServerInfoContainer.getParsedAddress();
+        int port = this.ServerInfoContainer.getParsedPort();
+
+        if (address != "" && port != 0) {
             this.LoadingImage.SetActive(true);
-            this.NetworkManager.networkAddress = this.ServerInfoContainer.Address;
+            this.NetworkManager.networkAddress = address;
             this.NetworkManager.networkPort = port;
             this.NetworkManager.StartClient();
-            Debug.Log("server ip = " + this.ServerInfoContainer.Address);
-            Debug.Log("server port = " + this.ServerInfoContainer.Port);
+            Debug.Log("Server IP = " + address);
+            Debug.Log("Server port = " + port);
             SceneManager.LoadScene("MobileApp");
         }
     }

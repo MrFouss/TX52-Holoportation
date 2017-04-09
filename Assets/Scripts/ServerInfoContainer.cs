@@ -6,17 +6,14 @@ using UnityEngine.UI;
 public class ServerInfoContainer : MonoBehaviour {
 
     public InputField AddressField;
-    public string Address;
-
     public InputField PortField;
-    public string Port;
 
-    public void UpdateAddress() {
-        this.Address = this.AddressField.text.ToString();
+    public string getParsedAddress() {
+         return this.AddressField.text.ToString();
     }
 
-    public void UpdatePort(){
-        this.Port = this.PortField.text.ToString();
+    public int getParsedPort(){
+        return int.Parse(this.PortField.text.ToString());
     }
 
     // Use this for initialization

@@ -18,8 +18,8 @@ public class NetworkAvatarController : AvatarControllerClassic
 	// Use this for initialization
 	void Start ()
 	{
-	    //InvokeRepeating("SendAvatarMessage", 1f, 1 / (float)NumberOfMovementSynchronizationsPerSecond);
-        InvokeRepeating("SendFaceMessage", 1f, 1f / (float)NumberOfFaceSynchronizationsPerSecond);
+	    InvokeRepeating("SendAvatarMessage", 1f, 1 / (float)NumberOfMovementSynchronizationsPerSecond);
+        //InvokeRepeating("SendFaceMessage", 1f, 1f / (float)NumberOfFaceSynchronizationsPerSecond);
     }
 
     void SendFaceMessage()

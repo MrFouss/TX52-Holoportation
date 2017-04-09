@@ -3,7 +3,97 @@ guid: 6e695732fb04092429f277913c7a7691
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: Ankle_L
+    100002: Ankle_R
+    100004: BackA_M
+    100006: BackB_M
+    100008: Chest_M
+    100010: Cup_L
+    100012: Cup_R
+    100014: Elbow_L
+    100016: Elbow_R
+    100018: Head_M
+    100020: Hip_L
+    100022: Hip_R
+    100024: IndexFinger1_L
+    100026: IndexFinger1_R
+    100028: IndexFinger2_L
+    100030: IndexFinger2_R
+    100032: IndexFinger3_L
+    100034: IndexFinger3_R
+    100036: Knee_L
+    100038: Knee_R
+    100040: Male3_BBallT_Hat
+    100042: //RootNode
+    100044: MiddleToe1_L
+    100046: MiddleToe1_R
+    100048: Neck_M
+    100050: RingFinger1_L
+    100052: RingFinger1_R
+    100054: RingFinger2_L
+    100056: RingFinger2_R
+    100058: RingFinger3_L
+    100060: RingFinger3_R
+    100062: Root_M
+    100064: Scapula_L
+    100066: Scapula_R
+    100068: Shoulder_L
+    100070: Shoulder_R
+    100072: ThumbFinger1_L
+    100074: ThumbFinger1_R
+    100076: ThumbFinger2_L
+    100078: ThumbFinger2_R
+    100080: ThumbFinger3_L
+    100082: ThumbFinger3_R
+    100084: Wrist_L
+    100086: Wrist_R
+    400000: Ankle_L
+    400002: Ankle_R
+    400004: BackA_M
+    400006: BackB_M
+    400008: Chest_M
+    400010: Cup_L
+    400012: Cup_R
+    400014: Elbow_L
+    400016: Elbow_R
+    400018: Head_M
+    400020: Hip_L
+    400022: Hip_R
+    400024: IndexFinger1_L
+    400026: IndexFinger1_R
+    400028: IndexFinger2_L
+    400030: IndexFinger2_R
+    400032: IndexFinger3_L
+    400034: IndexFinger3_R
+    400036: Knee_L
+    400038: Knee_R
+    400040: Male3_BBallT_Hat
+    400042: //RootNode
+    400044: MiddleToe1_L
+    400046: MiddleToe1_R
+    400048: Neck_M
+    400050: RingFinger1_L
+    400052: RingFinger1_R
+    400054: RingFinger2_L
+    400056: RingFinger2_R
+    400058: RingFinger3_L
+    400060: RingFinger3_R
+    400062: Root_M
+    400064: Scapula_L
+    400066: Scapula_R
+    400068: Shoulder_L
+    400070: Shoulder_R
+    400072: ThumbFinger1_L
+    400074: ThumbFinger1_R
+    400076: ThumbFinger2_L
+    400078: ThumbFinger2_R
+    400080: ThumbFinger3_L
+    400082: ThumbFinger3_R
+    400084: Wrist_L
+    400086: Wrist_R
     4300000: Male3_BBallT_Hat
+    11100000: //RootNode
+    13700000: Male3_BBallT_Hat
   materials:
     importMaterials: 1
     materialName: 0
@@ -14,6 +104,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
