@@ -3,7 +3,117 @@ guid: 1aee9acf50d7bdd4daca5057e5962307
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: Ankle_L
+    100002: Ankle_R
+    100004: BackA_M
+    100006: BackB_M
+    100008: Chest_M
+    100010: Cup_L
+    100012: Cup_R
+    100014: Elbow_L
+    100016: Elbow_R
+    100018: Fixed
+    100020: Hair_M
+    100022: Head_M
+    100024: Hip_L
+    100026: Hip_R
+    100028: IndexFinger1_L
+    100030: IndexFinger1_R
+    100032: IndexFinger2_L
+    100034: IndexFinger2_R
+    100036: IndexFinger3_L
+    100038: IndexFinger3_R
+    100040: IndexFinger4_L
+    100042: IndexFinger4_R
+    100044: Knee_L
+    100046: Knee_R
+    100048: //RootNode
+    100050: MiddleToe1_L
+    100052: MiddleToe1_R
+    100054: MiddleToe2_L
+    100056: MiddleToe2_R
+    100058: Neck_M
+    100060: Nose_M
+    100062: RingFinger1_L
+    100064: RingFinger1_R
+    100066: RingFinger2_L
+    100068: RingFinger2_R
+    100070: RingFinger3_L
+    100072: RingFinger3_R
+    100074: RingFinger4_L
+    100076: RingFinger4_R
+    100078: Root_M
+    100080: Scapula_L
+    100082: Scapula_R
+    100084: Shoulder_L
+    100086: Shoulder_R
+    100088: ThumbFinger1_L
+    100090: ThumbFinger1_R
+    100092: ThumbFinger2_L
+    100094: ThumbFinger2_R
+    100096: ThumbFinger3_L
+    100098: ThumbFinger3_R
+    100100: ThumbFinger4_L
+    100102: ThumbFinger4_R
+    100104: Wrist_L
+    100106: Wrist_R
+    400000: Ankle_L
+    400002: Ankle_R
+    400004: BackA_M
+    400006: BackB_M
+    400008: Chest_M
+    400010: Cup_L
+    400012: Cup_R
+    400014: Elbow_L
+    400016: Elbow_R
+    400018: Fixed
+    400020: Hair_M
+    400022: Head_M
+    400024: Hip_L
+    400026: Hip_R
+    400028: IndexFinger1_L
+    400030: IndexFinger1_R
+    400032: IndexFinger2_L
+    400034: IndexFinger2_R
+    400036: IndexFinger3_L
+    400038: IndexFinger3_R
+    400040: IndexFinger4_L
+    400042: IndexFinger4_R
+    400044: Knee_L
+    400046: Knee_R
+    400048: //RootNode
+    400050: MiddleToe1_L
+    400052: MiddleToe1_R
+    400054: MiddleToe2_L
+    400056: MiddleToe2_R
+    400058: Neck_M
+    400060: Nose_M
+    400062: RingFinger1_L
+    400064: RingFinger1_R
+    400066: RingFinger2_L
+    400068: RingFinger2_R
+    400070: RingFinger3_L
+    400072: RingFinger3_R
+    400074: RingFinger4_L
+    400076: RingFinger4_R
+    400078: Root_M
+    400080: Scapula_L
+    400082: Scapula_R
+    400084: Shoulder_L
+    400086: Shoulder_R
+    400088: ThumbFinger1_L
+    400090: ThumbFinger1_R
+    400092: ThumbFinger2_L
+    400094: ThumbFinger2_R
+    400096: ThumbFinger3_L
+    400098: ThumbFinger3_R
+    400100: ThumbFinger4_L
+    400102: ThumbFinger4_R
+    400104: Wrist_L
+    400106: Wrist_R
     4300000: Fixed
+    11100000: //RootNode
+    13700000: Fixed
   materials:
     importMaterials: 1
     materialName: 0
@@ -14,6 +124,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
