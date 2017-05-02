@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,22 +10,23 @@ public class ServerInfoContainer : MonoBehaviour {
     public InputField PortField;
 
 	public string Address;
-	public string Port;
-
-    public string getParsedAddress() {
-         return this.AddressField.text.ToString();
-    }
-
-    public int getParsedPort(){
-        return int.Parse(this.PortField.text.ToString());
-    }
+	public int Port;
 
     public void UpdateAddress() {
-		this.Address = this.AddressField.text.ToString();
+		string addressFieldContent = this.AddressField.text.ToString();
+
+		this.Address = addressFieldContent.Length == 0
+			? this.AddressField.placeholder.ToString()
+			: this.AddressField.text.ToString();
 	}
 
     public void UpdatePort(){
-		this.Port = this.PortField.text.ToString();
+		string portFieldContent = this.PortField.text.ToString();
+		int portFieldValue = int.Parse(portFieldContent);
+
+		this.Port = (portFieldContent.Length == 0 && portFieldValue >= 0 && portFieldValue <= 65535)
+			? int.Parse(this.PortField.placeholder.ToString())
+			: int.Parse(this.PortField.text.ToString());
 	}
 
     // Use this for initialization

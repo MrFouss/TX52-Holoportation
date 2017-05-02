@@ -13,17 +13,16 @@ public class ApplyConnectButton : MonoBehaviour {
     public GameObject LoadingImage;
 
     public void ConnectAndLoad() {
-        string address = this.ServerInfoContainer.getParsedAddress();
-        int port = this.ServerInfoContainer.getParsedPort();
+        string address = this.ServerInfoContainer.Address;
+        int port = this.ServerInfoContainer.Port;
+		
+        this.LoadingImage.SetActive(true);
+        this.NetworkManager.networkAddress = address;
+        this.NetworkManager.networkPort = port;
+        this.NetworkManager.StartClient();
 
-        if (address != "" && port != 0) {
-            this.LoadingImage.SetActive(true);
-            this.NetworkManager.networkAddress = address;
-            this.NetworkManager.networkPort = port;
-            this.NetworkManager.StartClient();
-            Debug.Log("Server IP = " + address);
-            Debug.Log("Server port = " + port);
-            SceneManager.LoadScene("MobileApp");
-        }
+        Debug.Log("Server IP: " + address);
+        Debug.Log("Server port: " + port);
+        SceneManager.LoadScene("MobileApp");
     }
 }

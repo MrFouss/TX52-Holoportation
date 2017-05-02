@@ -14,14 +14,13 @@ public class ApplyLaunchButton : MonoBehaviour {
 
     public void ConnectAndLoad()
     {
-        int port = this.ServerInfoContainer.getParsedPort();
+        int port = this.ServerInfoContainer.Port;
+		
+        this.LoadingImage.SetActive(true);
+        this.NetworkManager.networkPort = port;
+        this.NetworkManager.StartServer();
 
-        if (port != 0) {
-            this.LoadingImage.SetActive(true);
-            this.NetworkManager.networkPort = port;
-            this.NetworkManager.StartServer();
-            Debug.Log("server port = " + port);
-            SceneManager.LoadScene("KinectApp");
-        }
+        Debug.Log("Server port: " + port);
+        SceneManager.LoadScene("KinectApp");
     }
 }
