@@ -1,10 +1,31 @@
 fileFormatVersion: 2
 guid: f5c7807f4c784974582234b7674432f7
-timeCreated: 1485520256
+timeCreated: 1495378267
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - HipCenter: {instanceID: 0}
+  - Spine: {instanceID: 0}
+  - Neck: {instanceID: 0}
+  - Head: {instanceID: 0}
+  - LeftClavicle: {instanceID: 0}
+  - LeftUpperArm: {instanceID: 0}
+  - LeftElbow: {instanceID: 0}
+  - LeftHand: {instanceID: 0}
+  - RightClavicle: {instanceID: 0}
+  - RightUpperArm: {instanceID: 0}
+  - RightElbow: {instanceID: 0}
+  - RightHand: {instanceID: 0}
+  - LeftThigh: {instanceID: 0}
+  - LeftKnee: {instanceID: 0}
+  - LeftFoot: {instanceID: 0}
+  - RightThigh: {instanceID: 0}
+  - RightKnee: {instanceID: 0}
+  - RightFoot: {instanceID: 0}
+  - BodyRoot: {instanceID: 0}
+  - OffsetNode: {instanceID: 0}
+  - FaceTexture2D: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

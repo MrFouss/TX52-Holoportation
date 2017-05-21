@@ -39,6 +39,7 @@ public class AvatarController : MonoBehaviour
 	// Rotations of the bones when the Kinect tracking starts.
 	protected Quaternion[] initialRotations;
 	protected Quaternion[] initialLocalRotations;
+	protected Vector3[] initialJointPosition;
 
 	// Initial position and rotation of the transform
 	protected Vector3 initialPosition;
@@ -77,6 +78,7 @@ public class AvatarController : MonoBehaviour
 		// Initial rotations and directions of the bones.
 		initialRotations = new Quaternion[bones.Length];
 		initialLocalRotations = new Quaternion[bones.Length];
+		initialJointPosition = new Vector3[bones.Length];
 
 		// Map bones to the points the Kinect tracks
 		MapBones();
@@ -145,6 +147,7 @@ public class AvatarController : MonoBehaviour
 			if (bones[i] != null)
 			{
 				bones[i].rotation = initialRotations[i];
+				bones [i].position = initialJointPosition [i];
 			}
 		}
 
@@ -203,6 +206,14 @@ public class AvatarController : MonoBehaviour
         	boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, smoothFactor * Time.deltaTime);
 		else
 			boneTransform.rotation = newRotation;
+
+		Vector3 jointPosition = kinectManager.GetJointPosition(userId, iJoint);
+		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
+
+		if(smoothFactor != 0f)
+			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
+		else
+			boneTransform.position = newPosition;
 	}
 
 	// Apply the rotations tracked by kinect to a special joint
@@ -241,6 +252,13 @@ public class AvatarController : MonoBehaviour
 				boneTransform.rotation = newRotation;
 		}
 
+		Vector3 jointPosition = kinectManager.GetJointPosition(userId, (int)joint);
+		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
+
+		if(smoothFactor != 0f)
+			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
+		else
+			boneTransform.position = newPosition;
 	}
 
 	// Moves the avatar in 3D space - pulls the tracked position of the spine and applies it to root.
@@ -345,6 +363,7 @@ public class AvatarController : MonoBehaviour
 			{
 				initialRotations[i] = bones[i].rotation; // * Quaternion.Inverse(initialRotation);
 				initialLocalRotations[i] = bones[i].localRotation;
+				initialJointPosition [i] = bones[i].position;
 			}
 		}
 

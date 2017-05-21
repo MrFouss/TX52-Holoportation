@@ -13,7 +13,7 @@ public class FaceCutting : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         manager = KinectManager.Instance;
-        headTexture = new Texture2D(20, 20);
+        headTexture = new Texture2D(50, 50);
         tmp = new Texture2D(KinectWrapper.Constants.ColorImageWidth, KinectWrapper.Constants.ColorImageHeight);
         Controller.FaceTexture2D = headTexture;
     }
