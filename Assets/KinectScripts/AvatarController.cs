@@ -26,7 +26,6 @@ public class AvatarController : MonoBehaviour
 	// Whether the offset node must be repositioned to the user's coordinates, as reported by the sensor or not.
 	public bool offsetRelativeToSensor = false;
 
-
 	// The body root node
 	protected Transform bodyRoot;
 
@@ -46,11 +45,13 @@ public class AvatarController : MonoBehaviour
 	protected Quaternion initialRotation;
 
 	// Calibration Offset Variables for Character Position.
-	protected bool offsetCalibrated = false;
+	protected bool offsetComputed = false;
 	protected float xOffset, yOffset, zOffset;
 
 	// private instance of the KinectManager
 	protected KinectManager kinectManager;
+
+	protected bool requestedBodyMesurement;
 
 
 	// transform caching gives performance boost since Unity calls GetComponent<Transform>() each time you call transform
@@ -65,6 +66,17 @@ public class AvatarController : MonoBehaviour
 			return _transformCache;
 		}
 	}
+
+	public void RequestBodyMesurement() {
+		requestedBodyMesurement = true;
+		Invoke("EndBodyMesurement", 1);
+	}
+
+	protected void EndBodyMesurement() {
+		requestedBodyMesurement = false;
+	}
+		
+		
 
 	public void Awake()
     {
@@ -85,6 +97,10 @@ public class AvatarController : MonoBehaviour
 
 		// Get initial bone rotations
 		GetInitialRotations();
+
+
+				requestedBodyMesurement = false;
+//				requestedBodyMesurement = true;
 	}
 
 	// Update the avatar each frame.
@@ -107,11 +123,21 @@ public class AvatarController : MonoBehaviour
 			if (!bones[boneIndex])
 				continue;
 
+			bool mesure = requestedBodyMesurement;
+
 			if(boneIndex2JointMap.ContainsKey(boneIndex))
 			{
 				KinectWrapper.NuiSkeletonPositionIndex joint = !mirroredMovement ? boneIndex2JointMap[boneIndex] : boneIndex2MirrorJointMap[boneIndex];
-				TransformBone(UserID, joint, boneIndex, !mirroredMovement);
+
+				if (requestedBodyMesurement) {
+					TransformBonePosition (UserID, joint, boneIndex);
+				} else {
+					TransformBone(UserID, joint, boneIndex, !mirroredMovement);
+				}
+
+
 			}
+				
 			else if(specIndex2JointMap.ContainsKey(boneIndex))
 			{
 				// special bones (clavicles)
@@ -124,6 +150,7 @@ public class AvatarController : MonoBehaviour
 				}
 			}
 		}
+
 	}
 
 	// Set bones to their initial positions and rotations
@@ -180,7 +207,25 @@ public class AvatarController : MonoBehaviour
 		}
 
 		// re-calibrate the position offset
-		offsetCalibrated = false;
+		offsetComputed = false;
+	}
+
+	protected virtual void TransformBonePosition(uint userId, KinectWrapper.NuiSkeletonPositionIndex joint, int boneIndex) {
+		Transform boneTransform = bones[boneIndex];
+		if(boneTransform == null || kinectManager == null)
+			return;
+
+		int iJoint = (int)joint;
+		if(iJoint < 0)
+			return;
+
+		Vector3 jointPosition = kinectManager.GetJointPosition(userId, iJoint);
+		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
+
+		if(smoothFactor != 0f)
+			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
+		else
+			boneTransform.position = newPosition;
 	}
 
 	// Apply the rotations tracked by kinect to the joints.
@@ -207,13 +252,13 @@ public class AvatarController : MonoBehaviour
 		else
 			boneTransform.rotation = newRotation;
 
-		Vector3 jointPosition = kinectManager.GetJointPosition(userId, iJoint);
-		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
-
-		if(smoothFactor != 0f)
-			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
-		else
-			boneTransform.position = newPosition;
+//		Vector3 jointPosition = kinectManager.GetJointPosition(userId, iJoint);
+//		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
+//
+//		if(smoothFactor != 0f)
+//			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
+//		else
+//			boneTransform.position = newPosition;
 	}
 
 	// Apply the rotations tracked by kinect to a special joint
@@ -252,13 +297,13 @@ public class AvatarController : MonoBehaviour
 				boneTransform.rotation = newRotation;
 		}
 
-		Vector3 jointPosition = kinectManager.GetJointPosition(userId, (int)joint);
-		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
-
-		if(smoothFactor != 0f)
-			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
-		else
-			boneTransform.position = newPosition;
+//		Vector3 jointPosition = kinectManager.GetJointPosition(userId, (int)joint);
+//		Vector3 newPosition = Kinect2AvatarPos(jointPosition, true);
+//
+//		if(smoothFactor != 0f)
+//			boneTransform.position = Vector3.Lerp(boneTransform.position, newPosition, smoothFactor * Time.deltaTime);
+//		else
+//			boneTransform.position = newPosition;
 	}
 
 	// Moves the avatar in 3D space - pulls the tracked position of the spine and applies it to root.
@@ -274,9 +319,9 @@ public class AvatarController : MonoBehaviour
 		Vector3 trans = kinectManager.GetUserPosition(UserID);
 
 		// If this is the first time we're moving the avatar, set the offset. Otherwise ignore it.
-		if (!offsetCalibrated)
+		if (!offsetComputed)
 		{
-			offsetCalibrated = true;
+			offsetComputed = true;
 
 			xOffset = !mirroredMovement ? trans.x * moveRate : -trans.x * moveRate;
 			yOffset = trans.y * moveRate;
