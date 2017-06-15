@@ -63,7 +63,8 @@ public class AvatarMessage : MessageBase
     public static short Type = MsgType.Highest + 1;
 
     public Vector3Serializer Position;
-    public QuaternionSerializer[] Rotations;
+	public QuaternionSerializer[] Rotations;
+	public Vector3Serializer[] Positions;
     public int[] Bones;
 
     // For Unity
@@ -71,15 +72,17 @@ public class AvatarMessage : MessageBase
     {
     }
 
-    public AvatarMessage(Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Quaternion> rotations, Vector3 position)
+    public AvatarMessage(Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Transform> tr, Vector3 position)
     {
-        Rotations = new QuaternionSerializer[rotations.Count];
-        Bones = new int[rotations.Count];
+		Rotations = new QuaternionSerializer[tr.Count];
+		Positions = new Vector3Serializer[tr.Count];
+        Bones = new int[tr.Count];
         Position = new Vector3Serializer(position);
-        for (var i = 0; i < rotations.Count; i++)
+        for (var i = 0; i < tr.Count; i++)
         {
-            Bones[i] = (int)rotations.Keys.ElementAt(i);
-            Rotations[i] = new QuaternionSerializer(rotations[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]]);
+			Bones[i] = (int)tr.Keys.ElementAt(i);
+			Positions[i] = new Vector3Serializer(tr[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]].position);
+			Rotations[i] = new QuaternionSerializer(tr[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]].rotation);
         }
     }
 }

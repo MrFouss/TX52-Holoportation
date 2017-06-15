@@ -10,7 +10,7 @@ public class NetworkAvatarController : AvatarControllerClassic
     public int NumberOfMovementSynchronizationsPerSecond = 60;
     public int NumberOfFaceSynchronizationsPerSecond = 1;
     public int NumberOfLineToSend = 1;
-    private readonly Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Quaternion> rotations = new Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Quaternion>();
+	private readonly Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Transform> transforms = new Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Transform>();
     private Vector3 _position = Vector3.zero;
     public Texture2D FaceTexture2D;
     private Color[] buffer;
@@ -48,10 +48,10 @@ public class NetworkAvatarController : AvatarControllerClassic
 
     void SendAvatarMessage()
     {
-        if (rotations.Count != 0)
+        if (transforms.Count != 0)
         {
-            NetworkServer.SendToAll(AvatarMessage.Type, new AvatarMessage(rotations, _position));
-            rotations.Clear();
+            NetworkServer.SendToAll(AvatarMessage.Type, new AvatarMessage(transforms, _position));
+            transforms.Clear();
         }
     }
 
@@ -59,7 +59,7 @@ public class NetworkAvatarController : AvatarControllerClassic
     {
         Transform boneTransform = bones[boneIndex];
         base.TransformBone(userId, joint, boneIndex, flip);
-        rotations[joint] = boneTransform.rotation;
+        transforms[joint] = boneTransform;
     }
 
     protected override void MoveAvatar(uint userId)
