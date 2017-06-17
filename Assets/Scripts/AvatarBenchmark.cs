@@ -7,6 +7,8 @@ public class AvatarBenchmark : MonoBehaviour {
 
 	public Text avatarHeadDiff;
 	public Text avatarLeftHandDiff;
+	public Text avatarLeftKneeDiff;
+	public Text avatarLeftShoulderDiff;
 
 	private NetworkAvatarController avatarController;
 
@@ -20,7 +22,9 @@ public class AvatarBenchmark : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.avatarHeadDiff.text = this.avatarController.AvatarBonePositionDiff(KinectWrapper.NuiSkeletonPositionIndex.Head).ToString();
-		this.avatarLeftHandDiff.text = this.avatarController.AvatarBonePositionDiff(KinectWrapper.NuiSkeletonPositionIndex.HandLeft).ToString();
+		this.avatarLeftKneeDiff.text = this.avatarController.AvatarBonePositionDiff(15).ToString();
+		this.avatarHeadDiff.text = this.avatarController.AvatarBonePositionDiff(3).ToString();
+		this.avatarLeftShoulderDiff.text = this.avatarController.AvatarBonePositionDiff(10).ToString();
+		this.avatarLeftHandDiff.text = this.avatarController.AvatarBonePositionDiff(7).ToString();
 	}
 }

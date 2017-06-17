@@ -4,7 +4,6 @@
 Shader "Projector/Multiply" {
 	Properties {
 		_ShadowTex ("Cookie", 2D) = "gray" {}
-		_FalloffTex ("FallOff", 2D) = "white" {}
 	}
 	Subshader {
 		Tags {"Queue"="Transparent"}
@@ -22,20 +21,22 @@ Shader "Projector/Multiply" {
 			
 			struct v2f {
 				float4 uvShadow : TEXCOORD0;
-				float4 uvFalloff : TEXCOORD1;
 				UNITY_FOG_COORDS(2)
 				float4 pos : SV_POSITION;
+				float4 normal : NORMAL;				
+				float4 toProjector : VECTOR;
 			};
 			
 			float4x4 unity_Projector;
 			float4x4 unity_ProjectorClip;
 			
-			v2f vert (float4 vertex : POSITION)
+			v2f vert (appdata_base v)
 			{
 				v2f o;
-				o.pos = mul (UNITY_MATRIX_MVP, vertex);
-				o.uvShadow = mul (unity_Projector, vertex);
-				o.uvFalloff = mul (unity_ProjectorClip, vertex);
+				o.toProjector = mul (unity_ProjectorClip, float4(0, 0, 1, 0));
+				o.normal = mul(unity_ProjectorClip, mul (UNITY_MATRIX_M, v.normal));
+				o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+				o.uvShadow = mul (unity_Projector, v.vertex);
 				UNITY_TRANSFER_FOG(o,o.pos);
 				return o;
 			}
@@ -45,11 +46,17 @@ Shader "Projector/Multiply" {
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 texS = tex2Dproj (_ShadowTex, UNITY_PROJ_COORD(i.uvShadow));
+				fixed4 texS;
+				if (i.uvShadow.x < 0 || i.uvShadow.x > 1 || i.uvShadow.y < 0 || i.uvShadow.y > 1 || dot(i.toProjector, i.normal) <= 0) {
+					texS = fixed4(1, 1, 1, 1);
+				} else {
+					texS = tex2Dproj (_ShadowTex, UNITY_PROJ_COORD(i.uvShadow));
+				}
 				texS.a = 1.0-texS.a;
 
-				fixed4 texF = tex2Dproj (_FalloffTex, UNITY_PROJ_COORD(i.uvFalloff));
-				fixed4 res = lerp(fixed4(1,1,1,0), texS, texF.a);
+
+				fixed4 res = texS;
+
 
 				UNITY_APPLY_FOG_COLOR(i.fogCoord, res, fixed4(1,1,1,1));
 				return res;

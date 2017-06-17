@@ -14,12 +14,17 @@ public class NetworkAvatarController : AvatarControllerClassic
     private Vector3 _position = Vector3.zero;
     public Texture2D FaceTexture2D;
     private Color[] buffer;
+	private Projector faceProjector;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    InvokeRepeating("SendAvatarMessage", 1f, 1 / (float)NumberOfMovementSynchronizationsPerSecond);
         //InvokeRepeating("SendFaceMessage", 1f, 1f / (float)NumberOfFaceSynchronizationsPerSecond);
+
+		GameObject go = GameObject.Find("FaceProjector");
+		this.faceProjector = go.GetComponent<Projector>();
+		this.faceProjector.material.SetTexture ("_ShadowTex", FaceTexture2D);
     }
 
     void SendFaceMessage()

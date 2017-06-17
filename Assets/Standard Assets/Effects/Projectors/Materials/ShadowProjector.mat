@@ -30,7 +30,7 @@ Material:
     - first:
         name: _FalloffTex
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _ShadowTex
       second:
-        m_Texture: {fileID: 2800000, guid: 9de41d0728685b649bc6c853d1169a78, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6eedc634a828894438d11e0d7fa61327, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []

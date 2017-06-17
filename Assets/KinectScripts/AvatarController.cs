@@ -77,7 +77,7 @@ public class AvatarController : MonoBehaviour
 		}
 	}
 
-	public double AvatarBonePositionDiff(KinectWrapper.NuiSkeletonPositionIndex joint) {
+	public double AvatarBonePositionDiff(int joint) {
 		return avatarToBodyPositionDiff [(int)joint];
 	}
 
@@ -502,6 +502,7 @@ public class AvatarController : MonoBehaviour
 		{20, HumanBodyBones.RightFoot},
 		{21, HumanBodyBones.RightToes},
 	};
+
 
 	protected readonly Dictionary<int, KinectWrapper.NuiSkeletonPositionIndex> boneIndex2JointMap = new Dictionary<int, KinectWrapper.NuiSkeletonPositionIndex>
 	{
