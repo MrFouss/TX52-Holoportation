@@ -11,7 +11,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MobileApp.unity
   - enabled: 0
     path: Assets/Scenes/Menu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/KinectAppMenu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/KinectApp.unity

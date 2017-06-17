@@ -13,16 +13,16 @@ public class AvatarControllerClassic : AvatarController
 	// Public variables that will get matched to bones. If empty, the Kinect will simply not track it.
 	public Transform HipCenter;
 	public Transform Spine;
-	public Transform Neck;
+	public Transform ShoulderCenter;
 	public Transform Head;
 
-	public Transform LeftClavicle;
+	public Transform ShoulderLeft; // special bone
 	public Transform LeftUpperArm;
 	public Transform LeftElbow;
 	public Transform LeftHand;
 	private Transform LeftFingers = null;
 
-	public Transform RightClavicle;
+	public Transform ShoulderRight; // special bone
 	public Transform RightUpperArm;
 	public Transform RightElbow;
 	public Transform RightHand;
@@ -47,16 +47,16 @@ public class AvatarControllerClassic : AvatarController
 	{
 		bones[0] = HipCenter;
 		bones[1] = Spine;
-		bones[2] = Neck;
+		bones[2] = ShoulderCenter;
 		bones[3] = Head;
 
-		bones[4] = LeftClavicle;
+		bones[4] = ShoulderLeft; // special bone
 		bones[5] = LeftUpperArm;
 		bones[6] = LeftElbow;
 		bones[7] = LeftHand;
 		bones[8] = LeftFingers;
 
-		bones[9] = RightClavicle;
+		bones[9] = ShoulderRight; // special bone
 		bones[10] = RightUpperArm;
 		bones[11] = RightElbow;
 		bones[12] = RightHand;

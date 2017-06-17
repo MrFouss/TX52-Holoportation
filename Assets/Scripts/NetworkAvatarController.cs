@@ -55,7 +55,7 @@ public class NetworkAvatarController : AvatarControllerClassic
     {
         if (transforms.Count != 0)
         {
-            NetworkServer.SendToAll(AvatarMessage.Type, new AvatarMessage(transforms, _position));
+			NetworkServer.SendToAll(AvatarMessage.Type, new AvatarMessage(transforms, _position, avatarMotionMode));
             transforms.Clear();
         }
     }

@@ -67,12 +67,15 @@ public class AvatarMessage : MessageBase
 	public Vector3Serializer[] Positions;
     public int[] Bones;
 
+	public NetworkAvatarController.AvatarMotionMode avatarMotionMode;
+
+
     // For Unity
     public AvatarMessage()
     {
     }
 
-    public AvatarMessage(Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Transform> tr, Vector3 position)
+	public AvatarMessage(Dictionary<KinectWrapper.NuiSkeletonPositionIndex, Transform> tr, Vector3 position, NetworkAvatarController.AvatarMotionMode motionMode)
     {
 		Rotations = new QuaternionSerializer[tr.Count];
 		Positions = new Vector3Serializer[tr.Count];
@@ -84,5 +87,7 @@ public class AvatarMessage : MessageBase
 			Positions[i] = new Vector3Serializer(tr[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]].position);
 			Rotations[i] = new QuaternionSerializer(tr[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]].rotation);
         }
+
+		this.avatarMotionMode = motionMode;
     }
 }

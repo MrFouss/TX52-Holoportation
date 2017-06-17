@@ -339,13 +339,13 @@ MonoBehaviour:
   offsetRelativeToSensor: 0
   HipCenter: {fileID: 1951203915}
   Spine: {fileID: 23184475}
-  Neck: {fileID: 1048829191}
+  ShoulderCenter: {fileID: 1048829191}
   Head: {fileID: 1752558947}
-  LeftClavicle: {fileID: 973198424}
+  ShoulderLeft: {fileID: 0}
   LeftUpperArm: {fileID: 823221968}
   LeftElbow: {fileID: 2121095299}
   LeftHand: {fileID: 1894069265}
-  RightClavicle: {fileID: 1046286244}
+  ShoulderRight: {fileID: 0}
   RightUpperArm: {fileID: 768755310}
   RightElbow: {fileID: 1787877403}
   RightHand: {fileID: 1188742301}
@@ -1069,14 +1069,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 906837093}
---- !u!4 &973198424 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400022, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
-  m_PrefabInternal: {fileID: 1659796646}
---- !u!4 &1046286244 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400046, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
-  m_PrefabInternal: {fileID: 1659796646}
 --- !u!4 &1048829191 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400028, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
@@ -1683,6 +1675,18 @@ Prefab:
       propertyPath: m_Name
       value: LowManMeshSoft
       objectReference: {fileID: 0}
+    - target: {fileID: 400060, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400060, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400060, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 002577770266bcc49b0db6076ce2db35, type: 3}
   m_IsPrefabParent: 0
@@ -1768,7 +1772,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1710036239}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: -0.002, z: 2.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

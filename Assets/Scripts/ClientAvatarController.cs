@@ -106,11 +106,80 @@ public class ClientAvatarController : MonoBehaviour {
 
         for (var i = 0; i < msg.Bones.Length; ++i)
         {
+			if (msg.avatarMotionMode == AvatarController.AvatarMotionMode.MORPHOLOGY_CALIBRATION
+				|| msg.avatarMotionMode == AvatarController.AvatarMotionMode.POSITION_ORIENTATION) {
+				switch ((KinectWrapper.NuiSkeletonPositionIndex)msg.Bones[i])
+				{
+				case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
+					this.HipCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.Spine:
+					this.Spine.position =this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderCenter:
+					this.ShoulderCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.Head:
+					this.Head.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderLeft:
+					this.ShoulderLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.ElbowLeft:
+					this.ElbowLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.WristLeft:
+					this.WristLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
+					this.HandLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderRight:
+					this.ShoulderRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.ElbowRight:
+					this.ElbowRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.WristRight:
+					this.WristRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
+					this.HandRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.HipLeft:
+					this.HipLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.KneeLeft:
+					this.KneeLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.AnkleLeft:
+					this.AnkleLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.FootLeft:
+					this.FootLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.HipRight:
+					this.HipRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.KneeRight:
+					this.KneeRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.AnkleRight:
+					this.AnkleRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				case KinectWrapper.NuiSkeletonPositionIndex.FootRight:
+					this.FootRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+				}
+			}
+
             switch ((KinectWrapper.NuiSkeletonPositionIndex)msg.Bones[i])
             {
-                case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
-                    this.HipCenter.rotation = msg.Rotations[i].Quaternion;
-                    break;
+				case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
+					this.HipCenter.rotation = msg.Rotations [i].Quaternion;
+	                break;
                 case KinectWrapper.NuiSkeletonPositionIndex.Spine:
                     this.Spine.rotation = msg.Rotations[i].Quaternion;
                     break;
