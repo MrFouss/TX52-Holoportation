@@ -78,7 +78,7 @@ public class AvatarController : MonoBehaviour
 	}
 
 	public double AvatarBonePositionDiff(int joint) {
-		return avatarToBodyPositionDiff [(int)joint];
+		return avatarToBodyPositionDiff [joint];
 	}
 
 	public void setPositionOrientationAvatarMode() {
@@ -172,7 +172,7 @@ public class AvatarController : MonoBehaviour
 	}
 
 	// Set bones to their initial positions and rotations
-	public void ResetToInitialPosition()
+	virtual public void ResetToInitialPosition()
 	{
 		if(bones == null)
 			return;

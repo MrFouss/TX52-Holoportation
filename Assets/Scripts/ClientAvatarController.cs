@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 public class ClientAvatarController : MonoBehaviour {
 
+	// Public variables that will get matched to bones. If empty, the Kinect will simply not track it.
     public Transform HipCenter;
     public Transform Spine;
     public Transform ShoulderCenter;
@@ -35,6 +36,7 @@ public class ClientAvatarController : MonoBehaviour {
     public int FaceCenterY = 300;
 
     private Texture2D currentTexture;
+	private Projector faceProjector;
 
 
     // Use this for initialization
@@ -54,6 +56,9 @@ public class ClientAvatarController : MonoBehaviour {
         this.FaceTexture.Apply();
 
         this.Asset.GetComponent<Renderer>().materials[1].mainTexture = FaceTexture;
+
+		GameObject proj = GameObject.Find("FaceProjector");
+		this.faceProjector = go.GetComponent<Projector>();
     }
 
     // PNG version
@@ -193,5 +198,8 @@ public class ClientAvatarController : MonoBehaviour {
             }
         }
         this.FaceTexture.Apply();
+
+
+		this.faceProjector.material.SetTexture ("_ShadowTex", FaceTexture);
     }
 }

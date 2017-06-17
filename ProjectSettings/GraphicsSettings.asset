@@ -36,7 +36,7 @@ GraphicsSettings:
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10782, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 16000, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 4800000, guid: 01a668cc78047034a8a0c5ca2d24c6f7, type: 3}
   m_PreloadedShaders: []
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
     type: 0}
@@ -51,7 +51,37 @@ GraphicsSettings:
     useCascadedShadowMaps: 1
   m_DefaultRenderingPath: 1
   m_DefaultMobileRenderingPath: 1
-  m_TierSettings: []
+  m_TierSettings:
+  - serializedVersion: 2
+    m_BuildTarget: 7
+    m_Tier: 0
+    m_Settings:
+      standardShaderQuality: 0
+      renderingPath: 1
+      useCascadedShadowMaps: 1
+      useReflectionProbeBoxProjection: 1
+      useReflectionProbeBlending: 1
+    m_Automatic: 0
+  - serializedVersion: 2
+    m_BuildTarget: 7
+    m_Tier: 1
+    m_Settings:
+      standardShaderQuality: 1
+      renderingPath: 1
+      useCascadedShadowMaps: 1
+      useReflectionProbeBoxProjection: 1
+      useReflectionProbeBlending: 1
+    m_Automatic: 0
+  - serializedVersion: 2
+    m_BuildTarget: 7
+    m_Tier: 2
+    m_Settings:
+      standardShaderQuality: 1
+      renderingPath: 1
+      useCascadedShadowMaps: 1
+      useReflectionProbeBoxProjection: 1
+      useReflectionProbeBlending: 1
+    m_Automatic: 0
   m_LightmapStripping: 0
   m_FogStripping: 0
   m_LightmapKeepPlain: 1

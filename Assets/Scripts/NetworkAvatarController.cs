@@ -20,7 +20,7 @@ public class NetworkAvatarController : AvatarControllerClassic
 	void Start ()
 	{
 	    InvokeRepeating("SendAvatarMessage", 1f, 1 / (float)NumberOfMovementSynchronizationsPerSecond);
-        //InvokeRepeating("SendFaceMessage", 1f, 1f / (float)NumberOfFaceSynchronizationsPerSecond);
+//        InvokeRepeating("SendFaceMessage", 1f, 1f / (float)NumberOfFaceSynchronizationsPerSecond);
 
 		GameObject go = GameObject.Find("FaceProjector");
 		this.faceProjector = go.GetComponent<Projector>();

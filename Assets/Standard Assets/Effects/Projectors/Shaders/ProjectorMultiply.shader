@@ -52,7 +52,7 @@ Shader "Projector/Multiply" {
 				} else {
 					texS = tex2Dproj (_ShadowTex, UNITY_PROJ_COORD(i.uvShadow));
 				}
-				texS.a = 1.0-texS.a;
+//				texS.a = 1.0-texS.a;
 
 
 				fixed4 res = texS;

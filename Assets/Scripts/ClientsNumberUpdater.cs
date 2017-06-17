@@ -14,11 +14,11 @@ public class ClientsNumberUpdater : MonoBehaviour {
 	void Start () {
 	    this.ClientNumberText.text = "0";
         GameObject go = GameObject.Find("NetworkManager");
-//        this.customNetworkManager = go.GetComponent<CustomNetworkManager>();
+        this.customNetworkManager = go.GetComponent<CustomNetworkManager>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-//	    this.ClientNumberText.text = this.customNetworkManager.NumberOfClients.ToString();
+	    this.ClientNumberText.text = this.customNetworkManager.NumberOfClients.ToString();
 	}
 }
