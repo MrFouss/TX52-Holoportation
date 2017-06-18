@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Vuforia;
 
 public class ApplyConnectButton : MonoBehaviour {
 
     public ServerInfoContainer ServerInfoContainer;
     public NetworkManager NetworkManager;
+	public Toggle CardboardCheckbox;
     public GameObject LoadingImage;
 
     public void ConnectAndLoad() {
@@ -23,6 +25,13 @@ public class ApplyConnectButton : MonoBehaviour {
 
         Debug.Log("Server IP: " + address);
         Debug.Log("Server port: " + port);
-        SceneManager.LoadScene("MobileApp");
+
+		if (CardboardCheckbox.isOn) {
+			VuforiaConfiguration.Instance.DigitalEyewear.EyewearType = DigitalEyewearARController.EyewearType.VideoSeeThrough;
+			VuforiaConfiguration.Instance.DigitalEyewear.StereoFramework = DigitalEyewearARController.StereoFramework.Vuforia;
+		} else {
+			VuforiaConfiguration.Instance.DigitalEyewear.EyewearType = DigitalEyewearARController.EyewearType.None;
+		}
+		SceneManager.LoadScene("MobileApp");
     }
 }

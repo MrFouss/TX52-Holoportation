@@ -14,7 +14,7 @@ MonoBehaviour:
   vuforia:
     vuforiaLicenseKey: AYsjbb3/////AAAAGbz806uuZ05YizVBpnmDEiY5dLyFGfaSHx9YOKk/J57ojPhXLnQq99mggpjV1XC/KRzst1vrdOguNieDbH/yruuTIDpdscQRWW63ygZOdIAM2j0BZRC11eWyR1SzZQlKu4V4UZ0t5paRQxcXe2y4qvmRC5b5Ybmddz8q50t8G6Hlb8huYn3rEJKfzbzw7Yk7BCTl5OV3a5c/a9GggqiD/UMrAoyfco6nRTCz3oYVl8zcXtxhy4RlnhHGRNf06s+6TDOzT5pgbQaZGy6JCba9qgccg/77lqBkHzPdmO3wLuoMI7zRk6kCLIvd1AVn8pHxxGdncXQ+IqJTVMwWf87wak76axWyWkGydthv5bBO9WXj
     delayedInitialization: 0
-    cameraDeviceModeSetting: -1
+    cameraDeviceModeSetting: -2
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
     cameraOffset: 0.06
     distortionRenderingMode: 2
     distortionRenderingLayer: 31
-    eyewearType: 0
+    eyewearType: 2
     stereoFramework: 0
     seeThroughConfiguration: 0
-    viewerName: 
-    viewerManufacturer: 
+    viewerName: Generic Cardboard
+    viewerManufacturer: Vuforia
     useCustomViewer: 0
     customViewer:
       Version: 0
