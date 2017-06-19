@@ -88,6 +88,7 @@ public class AvatarMessage : MessageBase
 			Rotations[i] = new QuaternionSerializer(tr[(KinectWrapper.NuiSkeletonPositionIndex)Bones[i]].rotation);
         }
 
-		this.avatarMotionMode = motionMode;
+		// quck fix for avoiding persistance of bad joint positions when going from a motion mode to another
+		this.avatarMotionMode = AvatarController.AvatarMotionMode.POSITION_ORIENTATION;
     }
 }
