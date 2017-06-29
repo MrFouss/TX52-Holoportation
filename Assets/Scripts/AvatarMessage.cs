@@ -89,6 +89,6 @@ public class AvatarMessage : MessageBase
         }
 
 		// quck fix for avoiding persistance of bad joint positions when going from a motion mode to another
-		this.avatarMotionMode = AvatarController.AvatarMotionMode.POSITION_ORIENTATION;
+		this.avatarMotionMode = motionMode;
     }
 }

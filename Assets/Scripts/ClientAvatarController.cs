@@ -106,140 +106,92 @@ public class ClientAvatarController : MonoBehaviour {
 
         for (var i = 0; i < msg.Bones.Length; ++i)
         {
-			if (msg.avatarMotionMode == AvatarController.AvatarMotionMode.MORPHOLOGY_CALIBRATION
-				|| msg.avatarMotionMode == AvatarController.AvatarMotionMode.POSITION_ORIENTATION) {
-				switch ((KinectWrapper.NuiSkeletonPositionIndex)msg.Bones[i])
-				{
-				case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
-					this.HipCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.Spine:
-					this.Spine.position =this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderCenter:
-					this.ShoulderCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.Head:
-					this.Head.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderLeft:
-					this.ShoulderLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.ElbowLeft:
-					this.ElbowLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.WristLeft:
-					this.WristLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
-					this.HandLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.ShoulderRight:
-					this.ShoulderRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.ElbowRight:
-					this.ElbowRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.WristRight:
-					this.WristRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
-					this.HandRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.HipLeft:
-					this.HipLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.KneeLeft:
-					this.KneeLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.AnkleLeft:
-					this.AnkleLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.FootLeft:
-					this.FootLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.HipRight:
-					this.HipRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.KneeRight:
-					this.KneeRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.AnkleRight:
-					this.AnkleRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				case KinectWrapper.NuiSkeletonPositionIndex.FootRight:
-					this.FootRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
-				}
+			switch ((KinectWrapper.NuiSkeletonPositionIndex)msg.Bones[i])
+			{
+			case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
+				this.HipCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.HipCenter.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.Spine:
+				this.Spine.position =this.transform.TransformPoint(msg.Positions [i].V3);
+				this.Spine.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.ShoulderCenter:
+				this.ShoulderCenter.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.ShoulderCenter.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.Head:
+				this.Head.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.Head.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.ShoulderLeft:
+				this.ShoulderLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.ShoulderLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.ElbowLeft:
+				this.ElbowLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.ElbowLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.WristLeft:
+				this.WristLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.WristLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
+				this.HandLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.HandLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.ShoulderRight:
+				this.ShoulderRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.ShoulderRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.ElbowRight:
+				this.ElbowRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.ElbowRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.WristRight:
+				this.WristRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.WristRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
+				this.HandRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.HandRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.HipLeft:
+				this.HipLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.HipLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.KneeLeft:
+				this.KneeLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.KneeLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.AnkleLeft:
+				this.AnkleLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.AnkleLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.FootLeft:
+				this.FootLeft.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.FootLeft.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.HipRight:
+				this.HipRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.HipRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.KneeRight:
+				this.KneeRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.KneeRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.AnkleRight:
+				this.AnkleRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.AnkleRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			case KinectWrapper.NuiSkeletonPositionIndex.FootRight:
+				this.FootRight.position = this.transform.TransformPoint(msg.Positions [i].V3);
+				this.FootRight.rotation = msg.Rotations [i].Quaternion;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
 			}
 
-            switch ((KinectWrapper.NuiSkeletonPositionIndex)msg.Bones[i])
-            {
-				case KinectWrapper.NuiSkeletonPositionIndex.HipCenter:
-					this.HipCenter.rotation = msg.Rotations [i].Quaternion;
-	                break;
-                case KinectWrapper.NuiSkeletonPositionIndex.Spine:
-                    this.Spine.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.ShoulderCenter:
-                    this.ShoulderCenter.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.Head:
-                    this.Head.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.ShoulderLeft:
-                    this.ShoulderLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.ElbowLeft:
-                    this.ElbowLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.WristLeft:
-                    this.WristLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
-                    this.HandLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.ShoulderRight:
-                    this.ShoulderRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.ElbowRight:
-                    this.ElbowRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.WristRight:
-                    this.WristRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
-                    this.HandRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.HipLeft:
-                    this.HipLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.KneeLeft:
-                    this.KneeLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.AnkleLeft:
-                    this.AnkleLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.FootLeft:
-                    this.FootLeft.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.HipRight:
-                    this.HipRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.KneeRight:
-                    this.KneeRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.AnkleRight:
-                    this.AnkleRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                case KinectWrapper.NuiSkeletonPositionIndex.FootRight:
-                    this.FootRight.rotation = msg.Rotations[i].Quaternion;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
     }
 
